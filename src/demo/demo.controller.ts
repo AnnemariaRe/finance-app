@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { DemoService } from './demo.service';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -8,6 +8,7 @@ export class DemoController {
   constructor(private readonly demoService: DemoService) {}
 
   @Get('hello')
+  @Render('demo')
   getHello(): { message: string } {
     return { message: this.demoService.getHello() };
   }

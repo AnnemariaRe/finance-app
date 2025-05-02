@@ -1,0 +1,46 @@
+@media screen and (min-width: 1015px) {
+    .icon {
+        position: relative;
+        font-size: 25px;
+    }
+
+    .menu-nav {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    main {
+        padding-left: 100px;
+        padding-right: 25px;
+    }
+
+    .menu-bar {
+        margin-left: -10px;
+        width: 90px;
+    }
+
+    .menu-nav {
+        margin-top: 30px;
+    }
+
+    .menu-bar a {
+        padding: 20px 25px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #16241e;
+        display: block;
+        text-align: center;
+    }
+
+    .menu-nav .title {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 930px) {
+    main {
+        padding-left: 80px;
+    }
+}

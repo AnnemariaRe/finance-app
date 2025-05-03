@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`End to end tests GET /error renders error page 1`] = `
+"<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/Chart.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  
+  <script src="components/page_load.js" type="text/javascript"></script>  <link href="css/layout-styles.css" rel="stylesheet">
+  <link href="css/module-styles.css" rel="stylesheet">
+  <link href="css/screen-styles.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></head>
+
+<body>
+<header>
+  <div class="menu-bar">
+    <nav class="menu-nav">
+      <a class="menu-btn" href="/">
+        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+        <span class="title">Главная</span>
+      </a>
+      <a class="menu-btn" href="/wallet">
+        <span class="icon"><i class="fa fa-tasks" aria-hidden="true"></i></span>
+        <span class="title">Кошелек</span>
+      </a>
+      <a class="menu-btn" href="/history">
+        <span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span>
+        <span class="title">История</span>
+      </a>
+    </nav>
+  </div></header>
+<main>
+  <div class="content">
+  <div class="heading">
+    <h1>Error</h1>
+    <p>Something went wrong</p>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="footer-bar">
+    <div>Total load time:</div>
+    <div id="loading"></div>
+    <div>server - 5 ms</div>
+  </div>
+</footer>
+</body>
+
+</html>"
+`;
+
+exports[`End to end tests GET /hello renders demo page 1`] = `
+"<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/Chart.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  
+  <script src="components/page_load.js" type="text/javascript"></script>  <link href="css/layout-styles.css" rel="stylesheet">
+  <link href="css/module-styles.css" rel="stylesheet">
+  <link href="css/screen-styles.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></head>
+
+<body>
+<header>
+  <div class="menu-bar">
+    <nav class="menu-nav">
+      <a class="menu-btn" href="/">
+        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+        <span class="title">Главная</span>
+      </a>
+      <a class="menu-btn" href="/wallet">
+        <span class="icon"><i class="fa fa-tasks" aria-hidden="true"></i></span>
+        <span class="title">Кошелек</span>
+      </a>
+      <a class="menu-btn" href="/history">
+        <span class="icon"><i class="fa fa-history" aria-hidden="true"></i></span>
+        <span class="title">История</span>
+      </a>
+    </nav>
+  </div></header>
+<main>
+  <div class="heading">
+  <h1>Hello World!</h1>
+</div>
+
+
+</main>
+<footer>
+  <div class="footer-bar">
+    <div>Total load time:</div>
+    <div id="loading"></div>
+    <div>server - 5 ms</div>
+  </div>
+</footer>
+</body>
+
+</html>"
+`;

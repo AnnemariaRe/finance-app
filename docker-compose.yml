@@ -16,6 +16,25 @@ services:
     restart: unless-stopped
     networks:
       - app_network
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pg_password
+      POSTGRES_DB: postgres_db
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U user -d postgres_db']
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
 
 networks:
   app_network:

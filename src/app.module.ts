@@ -18,7 +18,6 @@ import { ResponseTimeInterceptor } from './response-time.interceptor';
 	  type: 'postgres',
       url: 'postgres://user:pg_password@db/postgres_db',
       entities: [User],
-      synchronize: true
     })],
 })
 export class AppModule {}

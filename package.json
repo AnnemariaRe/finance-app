@@ -18,13 +18,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "check-before-push": "yarn install && yarn lint && yarn test",
+    "check-before-push": "yarn install && yarn format && yarn lint && yarn test",
     "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli",
-    "migration:run": "typeorm migration:run -- -d ./db/typeorm.config.ts",
-    "migration:generate": "typeorm -- -d ./db/typeorm.config.ts migration:generate ./db/migrations/%npm_config_name%",
-    "migration:create": "typeorm -- migration:create ./db/migrations/$npm_config_name",
-    "migration:revert": "typeorm -- -d ./db/typeorm.config.ts migration:revert",
-    "migration:show": "typeorm -- migration:show -d ./db/typeorm.config.ts"
+    "migration:run": "typeorm migration:run -- -d src/db/typeorm.config.ts",
+    "migration:generate": "typeorm -- -d src/db/typeorm.config.ts migration:generate ./db/migrations/%npm_config_name%",
+    "migration:create": "typeorm -- migration:create src/db/migrations/$npm_config_name",
+    "migration:revert": "typeorm -- -d src/db/typeorm.config.ts migration:revert",
+    "migration:show": "typeorm -- migration:show -d src/db/typeorm.config.ts"
   },
   "dependencies": {
     "@fastify/static": "^6.9.0",

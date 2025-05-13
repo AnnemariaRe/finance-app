@@ -12,8 +12,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
 
     this.logger.error(
-      `Request failed: ${request.method} ${request.url}`,
-      exception,
+      `Request failed: ${request.method} ${request.url} (${exception})`,
     );
 
     if (process.env.NODE_ENV !== 'test') {

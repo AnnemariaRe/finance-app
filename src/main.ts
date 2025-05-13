@@ -2,12 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { GlobalExceptionFilter } from './global-exception.filter';
 import { join } from 'path';
 import hbs from 'hbs';
 
 async function bootstrap() {
+  const logger = new Logger('Bootstrap');
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const config = new DocumentBuilder()
     .setTitle('WalletKeeper Web App')
@@ -26,7 +27,7 @@ async function bootstrap() {
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
 
   await app.listen(process.env.PORT ?? 3000);
-  console.log(`Application is running on: ${await app.getUrl()}`);
+  logger.log(`Application is running on: ${await app.getUrl()}`);
 }
 
 bootstrap();

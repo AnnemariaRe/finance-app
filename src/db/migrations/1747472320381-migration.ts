@@ -8,7 +8,7 @@ export class Migration1747472320381 implements MigrationInterface {
       `CREATE TABLE "currency" ("id" SERIAL NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "name" character varying NOT NULL, "code" character varying(3), "symbol" character NOT NULL, CONSTRAINT "PK_3cda65c731a6264f0e444cc9b91" PRIMARY KEY ("id"))`,
     );
     await queryRunner.query(
-      `CREATE TABLE "account" ("id" SERIAL NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "title" character varying NOT NULL, "isActive" boolean NOT NULL DEFAULT true, "accountType" "public"."account_accounttype_enum" NOT NULL, "userId" integer, "currencyId" integer, CONSTRAINT "PK_54115ee388cdb6d86bb4bf5b2ea" PRIMARY KEY ("id"))`,
+      `CREATE TABLE "account" ("id" SERIAL NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "title" character varying NOT NULL, "isActive" boolean NOT NULL DEFAULT true, "accountType" "public"."account_accounttype_enum" NOT NULL, "userId" integer, "currencyId" integer, CONSTRAINT "PK_54115ee388cdb6d86bb4bf5b2ea" PRIMARY KEY ("id"))`,
     );
     await queryRunner.query(
       `ALTER TABLE "account" ADD CONSTRAINT "FK_60328bf27019ff5498c4b977421" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,

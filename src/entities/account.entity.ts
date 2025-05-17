@@ -8,6 +8,7 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -19,6 +20,10 @@ export class Account {
   @ApiProperty()
   @CreateDateColumn()
   createdAt: Date;
+
+  @ApiProperty()
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ApiProperty()
   @Column()

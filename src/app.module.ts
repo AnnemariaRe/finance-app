@@ -10,7 +10,10 @@ import { RequestLoggerMiddleware } from './logger/request-logger.middleware';
 import { AppLoggerService } from './logger/app-logger.service';
 import { Account } from './entities/account.entity';
 import { Currency } from './entities/currency.entity';
+import { Category } from './entities/category.entity';
+import { Transaction } from './entities/transaction.entity';
 import { WalletModule } from './wallet/wallet.module';
+import { HistoryModule } from './history/history.module';
 
 @Module({
   controllers: [DemoController],
@@ -25,10 +28,11 @@ import { WalletModule } from './wallet/wallet.module';
   imports: [
     UsersModule,
     WalletModule,
+	HistoryModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: 'postgres://user:pg_password@db/postgres_db',
-      entities: [User, Account, Currency]
+      entities: [User, Account, Currency, Category, Transaction]
     }),
   ],
 })

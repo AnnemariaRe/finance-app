@@ -1,4 +1,4 @@
-import { forwardRef, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Account } from 'src/entities/account.entity';
 import { Category } from 'src/entities/category.entity';
@@ -10,6 +10,6 @@ import TransactionsService from 'src/transactions/transactions.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Transaction, Account, Category, User])],
   controllers: [HistoryController],
-  providers: [TransactionsService]
+  providers: [TransactionsService],
 })
 export class HistoryModule {}

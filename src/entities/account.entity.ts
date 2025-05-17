@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Currency } from './currency.entity';
-import { Transaction } from "../entities/transaction.entity";
+import { Transaction } from '../entities/transaction.entity';
 import { AccountType } from '../enums/AccountType';
 import { User } from '../entities/user.entity';
 import {
@@ -50,8 +50,9 @@ export class Account {
   @ManyToOne(() => Currency, (currency) => currency.accounts)
   currency: Currency;
 
-
   @ApiProperty({ type: () => Transaction })
-  @OneToMany(() => Transaction, transaction => transaction.account, { cascade: true })
+  @OneToMany(() => Transaction, (transaction) => transaction.account, {
+    cascade: true,
+  })
   transactions: Transaction[];
 }

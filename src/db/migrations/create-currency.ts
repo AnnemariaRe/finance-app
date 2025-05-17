@@ -4,9 +4,9 @@ export class Migration1747472320381 implements MigrationInterface {
   name = 'Migration1747472320381';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-	await queryRunner.query(
-	`CREATE TYPE "account_accounttype_enum" AS ENUM('SAVINGS', 'CURRENT', 'CASH', 'CREDIT')`
-	);	
+    await queryRunner.query(
+      `CREATE TYPE "account_accounttype_enum" AS ENUM('SAVINGS', 'CURRENT', 'CASH', 'CREDIT')`,
+    );
     await queryRunner.query(
       `CREATE TABLE "currency" ("id" SERIAL NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "name" character varying NOT NULL, "code" character varying(3), "symbol" character NOT NULL, CONSTRAINT "PK_3cda65c731a6264f0e444cc9b91" PRIMARY KEY ("id"))`,
     );

@@ -28,11 +28,11 @@ import { HistoryModule } from './history/history.module';
   imports: [
     UsersModule,
     WalletModule,
-	HistoryModule,
+    HistoryModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: 'postgres://user:pg_password@db/postgres_db',
-      entities: [User, Account, Currency, Category, Transaction]
+      entities: [User, Account, Currency, Category, Transaction],
     }),
   ],
 })

@@ -19,13 +19,17 @@ export default class TransactionsService {
     private readonly categoryRepository: Repository<Category>,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    ) {}
+  ) {}
 
   async create(userId: number, createTransactionDto: CreateTransactionDto) {
     const { amount, date, account, category } = createTransactionDto;
-    const user = await this.userRepository.findOne({where: { id: userId }});
-    const _account = await this.accountRepository.findOne({where: { user: user, title: account }});
-    const _category = await this.categoryRepository.findOne({where: { user: user, name: category }});
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    const _account = await this.accountRepository.findOne({
+      where: { user: user, title: account },
+    });
+    const _category = await this.categoryRepository.findOne({
+      where: { user: user, name: category },
+    });
 
     const transaction = new Transaction();
     if (_category.operationType == OperationType.EXPENSE) {
@@ -33,7 +37,7 @@ export default class TransactionsService {
     } else {
       transaction.amount = amount;
     }
-  
+
     transaction.category = _category;
     transaction.date = date;
     transaction.account = _account;
@@ -43,9 +47,12 @@ export default class TransactionsService {
   }
 
   async findAllTransactionsByUserId(userId: number) {
-    const user = await this.userRepository.findOne({ 
-      where: { id: userId }, 
-      relations: ['accounts.transactions.category', 'accounts.transactions.account.currency']
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+      relations: [
+        'accounts.transactions.category',
+        'accounts.transactions.account.currency',
+      ],
     });
     if (user && user.accounts != null) {
       const transactions = user.accounts.reduce((acc, account) => {

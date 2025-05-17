@@ -8,10 +8,13 @@ export default class CategoriesService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    ) {}
+  ) {}
 
   async findCategoriesByUserId(userId: number) {
-    const user  = await this.userRepository.findOne({ where: { id: userId }, relations: ['categories']});
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+      relations: ['categories'],
+    });
     return user.categories;
   }
 }

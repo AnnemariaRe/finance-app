@@ -11,9 +11,6 @@ export class Migration1747493844289 implements MigrationInterface {
       `CREATE TABLE "category" ("id" SERIAL NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "name" character varying NOT NULL, "operationType" "public"."category_operationtype_enum" NOT NULL, "userId" integer, CONSTRAINT "PK_9c4e4a89e3674fc9f382d733f03" PRIMARY KEY ("id"))`,
     );
     await queryRunner.query(
-      `ALTER TYPE "public"."account_accounttype_enum" RENAME TO "account_accounttype_enum_old"`,
-    );
-    await queryRunner.query(
       `CREATE TYPE "public"."account_accounttype_enum" AS ENUM('Основной', 'Сберегательный', 'Кредитный', 'Наличные')`,
     );
     await queryRunner.query(

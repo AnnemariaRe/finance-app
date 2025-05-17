@@ -1,46 +1,405 @@
-@media screen and (min-width: 1015px) {
-    .icon {
-        position: relative;
-        font-size: 25px;
-    }
+@media screen and (max-width: 1630px) {
+  .content {
+    padding-left: 0px;
+    padding-right: 20px;
+  }
 
-    .menu-nav {
-        position: relative;
-    }
+  .accounts {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1570px) {
+  .exchange-table td {
+    padding: 10px 57px;
+  }
+}
+
+@media screen and (max-width: 1490px) {
+  .open-button {
+    margin: 10px 10px;
+  }
+
+  .exchange-table td {
+    padding: 10px 51px;
+  }
+
+  .graph-expense {
+    margin-top: -350px;
+  }
+}
+
+@media screen and (max-width: 1390px) {
+  .open-button {
+    margin: 10px 30px;
+    margin-left: -10px;
+  }
+
+  .exchange-table td {
+    padding: 10px 49px;
+  }
+
+  .graph-expense {
+    margin-top: -340px;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .open-button {
+    margin: 10px 10px;
+  }
+
+  .buttons {
+    margin-right: 5%;
+  }
+
+  .exchange-table td {
+    padding: 10px 45px;
+  }
+
+  .graphs {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .open-button {
+    margin: 10px 10px;
+  }
+
+  .buttons {
+    width: 40%;
+  }
+
+  .exchange-table td {
+    padding: 10px 44px;
+  }
+
+  .graph-expense {
+    margin-top: -320px;
+  }
+
+  .month-balance-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .open-button {
+    margin: 10px 10px;
+  }
+
+  .buttons {
+    margin-right: 0px;
+    width: 42%;
+  }
+
+  .balance-all {
+    width: 55%;
+    margin-left: 5px;
+  }
+
+  .balance-item {
+    padding: 0px 10px;
+    margin: 10px 30px;
+    font-size: 21px;
+    border-radius: 6px;
+  }
+
+  .graph-expense {
+    margin-top: -280px;
+  }
+
+  .month-balance-all {
+    padding: 10px 0px;
+  }
+
+  table td,
+  table th {
+    padding: 25px 20px;
+  }
+
+  .accounts-body table td {
+    font-weight: bold;
+    padding: 20px 15px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .open-button,
+  button {
+    padding: 10px 10px;
+    margin: 10px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .balance-item {
+    width: 80%;
+    margin: 10px 40px;
+  }
+
+  .balance-all {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .graph-expense {
+    width: 90%;
+    margin-right: 20px;
+    margin-top: 25px;
+  }
+
+  .graph-expense h3 {
+    margin: 5px;
+    margin-right: 50px;
+    text-align: center;
+  }
+
+  .month-balance-all {
+    width: 95%;
+    display: table;
+    margin-top: 10px;
+    margin-left: 50px;
+  }
+
+  .month-balance-item {
+    width: 90%;
+    margin: 15px 0px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exchange {
+    width: 90%;
+  }
+
+  .exchange-table td {
+    padding: 10px 80px;
+  }
+
+  .history-list {
+    width: 90%;
+  }
+
+  .graphs {
+    width: 100%;
+    display: flex;
+    margin-top: 0px;
+    margin-right: -10px;
+  }
+
+  .graph {
+    width: 50%;
+  }
+
+  .active .btn-a,
+  .unactive .btn-a {
+    display: none;
+  }
+
+  .accounts {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 1015px) {
+  .icon {
+    position: relative;
+    font-size: 25px;
+  }
+
+  .menu-nav {
+    position: relative;
+  }
 }
 
 @media screen and (max-width: 1015px) {
-    main {
-        padding-left: 100px;
-        padding-right: 25px;
-    }
+  main {
+    padding-left: 100px;
+    padding-right: 25px;
+  }
 
-    .menu-bar {
-        margin-left: -10px;
-        width: 90px;
-    }
+  .first-block {
+    width: 98%;
+    margin-left: 15px;
+  }
 
-    .menu-nav {
-        margin-top: 30px;
-    }
+  .balance-all {
+    width: 100%;
+    margin-left: 30px;
+  }
 
-    .menu-bar a {
-        padding: 20px 25px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #16241e;
-        display: block;
-        text-align: center;
-    }
+  .menu-bar {
+    margin-left: -10px;
+    width: 90px;
+  }
 
-    .menu-nav .title {
-        display: none;
-    }
+  .menu-nav {
+    margin-top: 30px;
+  }
 
+  .menu-bar a {
+    padding: 20px 25px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #16241e;
+    display: block;
+    text-align: center;
+  }
+
+  .menu-nav .title {
+    display: none;
+  }
+
+  .auth-button {
+    width: 40px;
+    bottom: 10px;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .accounts {
+    margin-left: 5px;
+  }
 }
 
 @media screen and (max-width: 930px) {
-    main {
-        padding-left: 80px;
-    }
+  main {
+    padding-left: 80px;
+  }
+
+  .buttons {
+    margin-right: 1%;
+    width: 50%;
+  }
+
+  .open-button {
+    width: 10%;
+    padding: 10px 5%;
+    margin: 10px 3%;
+  }
+
+  .balance-item {
+    width: 80%;
+    margin: 10px 40px;
+  }
+
+  .balance-all {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .graph-expense {
+    width: 90%;
+    margin-right: 20px;
+    margin-top: 25px;
+  }
+
+  .month-balance-all {
+    width: 90%;
+    margin-left: 40px;
+    float: none;
+  }
+
+  .month-balance-item {
+    width: 80%;
+    margin: 15px 20px;
+    border-radius: 5px;
+  }
+
+  .exchange {
+    width: 90%;
+  }
+
+  .exchange-table td {
+    padding: 10px 60px;
+  }
+
+  .history-list {
+    width: 100%;
+  }
+
+  .third-block {
+    width: 100%;
+  }
+
+  .graphs {
+    width: 90%;
+    margin-left: 10px;
+  }
+
+  .accounts {
+    margin-left: 20px;
+  }
+
+  .accounts-body table td .type,
+  .accounts-body table .type {
+    display: none;
+  }
+
+  .modal-content {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 787px) {
+  .buttons {
+    margin-right: -10px;
+  }
+
+  .graphs {
+    width: 90%;
+  }
+
+  .open-button {
+    font-size: 15px;
+  }
+
+  .buttons {
+    margin-top: -50px;
+  }
+
+  .heading {
+    font-size: 20px;
+    margin-left: 3%;
+  }
+}
+
+@media screen and (max-width: 748px) {
+  .month-balance-all {
+    margin-left: 10%;
+  }
+
+  .month-balance-item {
+    width: 70%;
+  }
+
+  .exchange {
+    width: 90%;
+  }
+
+  .exchange-table td {
+    padding: 10px 60px;
+  }
+
+  .graphs {
+    display: block;
+    width: 100%;
+  }
+
+  .graph {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 660px) {
+  .accounts-body table td .fa-ruble,
+  .accounts-body table td .fa-euro,
+  .accounts-body table td .fa-dollar {
+    display: none;
+  }
 }

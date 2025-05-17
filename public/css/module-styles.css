@@ -1,3 +1,91 @@
 .menu-bar .title {
     position: relative;
 }
+
+table td, table th {
+    padding: 25px;
+}
+
+table th {
+    text-align: left;
+    border-bottom: 2px solid #C5CEB6;
+    background-color: white;
+    color: #3e5c4d;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.account-block {
+    margin-top: 25px;
+}
+
+.accounts {
+    display: table;
+    width: 100%;
+}
+
+.accounts-body table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.accounts-body table td {
+    text-align: left;
+    border-top: 2px solid #3e5c4d;
+    border-bottom: 2px solid #3e5c4d;
+    background-color: white;
+    color: #3e5c4d;
+}
+
+.accounts-body table tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+.accounts-header {
+    background-color: #F5F5F5;
+    padding: 25px;
+    border-top: 2px solid #3e5c4d;
+}
+
+.accounts-header h3 {
+    color: #344e41;
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: left;
+}
+
+.accounts-body {
+    background-color: #F9F7F0;
+    line-height: 20px;
+}
+
+.accounts-body table td span, .subtitle {
+    color: #C2C2C2;
+    font-weight: 400;
+}
+
+.accounts-body table td {
+    font-weight: bold;
+    padding: 20px;
+}
+
+.accounts-body table tr {
+    display: table-row;
+    vertical-align: middle;
+    border-color: transparent;
+}
+
+.active, .active .btn-a {
+    color: #459743;
+    font-weight: bold;
+}
+
+.unactive, .unactive .btn-a {
+    color: #974943;
+    font-weight: bold;
+}

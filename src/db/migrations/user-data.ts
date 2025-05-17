@@ -8,5 +8,7 @@ export class SeedUserTable1715960000000 implements MigrationInterface {
       `);
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(``);
+  }
 }

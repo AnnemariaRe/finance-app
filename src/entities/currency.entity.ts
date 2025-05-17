@@ -1,16 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Account } from '../entities/account.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Account } from '../entities/account.entity';
 
 @Entity()
-export class User {
+export class Currency {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,22 +19,18 @@ export class User {
   createdAt: Date;
 
   @ApiProperty()
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @ApiProperty()
-  @Column()
-  email: string;
-
-  @ApiProperty()
   @Column()
   name: string;
 
   @ApiProperty()
-  @Column()
-  password: string;
+  @Column({ length: 3, nullable: true })
+  code: string;
+
+  @ApiProperty()
+  @Column({ type: 'char' })
+  symbol: string;
 
   @ApiProperty({ type: () => Account })
-  @OneToMany(() => Account, (account) => account.user, { cascade: true })
+  @OneToMany(() => Account, (account) => account.currency, { cascade: true })
   accounts: Account[];
 }

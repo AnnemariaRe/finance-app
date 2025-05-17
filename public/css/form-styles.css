@@ -1,0 +1,97 @@
+.open-button, button {
+    background-color: #344e41;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.submit {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.buttons {
+    width: 35%;
+    float: right;
+    margin-top: -65px;
+    margin-right: -5%;
+}
+
+.open-button:hover {
+    background-color: #4C534C;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+input[type=text], select, input[type=date] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888;
+    width: 25%; 
+}
+
+.animate {
+    animation: animatezoom 0.6s
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.accounts-header a:hover {
+    background-color: #DEDEDE;
+}
+
+.accounts-header a {
+    font-size: 18px;
+    padding: 12px 14px;
+    margin-top: -37px;
+    margin-left: 5px;
+    background-color: #4C534C;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    float: right;
+    border-radius: 5px;
+}
+
+#check1, #check2 {
+    display: none;
+}

@@ -1,0 +1,89 @@
+<div class="content">
+    <section class="account-block">
+        <div class="accounts">
+            <div class="accounts-header">
+                <h3>Счета</h3>
+                <a id="createAccount" class="button" onclick="document.getElementById('createAccountModal').style.display='block'">
+                    <i class="fa fa-plus"></i>
+                    Добавить счет
+                </a>
+
+                <div id="createAccountModal" class="modal">
+                    <form class="modal-content animate" method="POST" action="/wallet/account">
+                        <div class="container">
+                            <label for="account_name"><b>Название счета</b></label>
+                            <input type="text" name="name" placeholder="Введите название счета" id="account_name" required>
+
+                            <label for="currency"><b>Валюта</b></label>
+                            <select id="currency_select" name="currency">
+                                {{#each viewData.currencies}}
+                                    <option>{{name}}</option> 
+                                {{/each}}
+                            </select>
+
+                            <label for="account_type"><b>Тип счета</b></label>
+                            <select id="account_type_select" name="accountType">
+                                {{#each viewData.accountTypes}}
+                                    <option>{{this}}</option> 
+                                {{/each}}
+                            </select>
+
+                            <button class="submit" type="submit">Создать</button>
+                        </div>
+                    </form>
+                </div>
+
+                <script>
+                    var modal = document.getElementById('createAccountModal');
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+
+            <div class="accounts-body">
+                <table id="account-table">
+                    {{#each viewData.accounts}}
+                    <tr>
+                        <td>
+                            <div class="icon"><i class="fa fa-fa-bank"></i></div>
+                        </td>
+                        <td>
+                            {{title}}
+                            <div class="subtitle">Название</div>
+                        </td>
+                        <td>
+                            {{totalAmount}}
+                            <div class="subtitle">Количество</div>
+                        </td>
+                        <td>
+                            {{currency.name}}
+                            <div class="subtitle">Валюта</div>
+                        </td>
+                        <td>
+                            {{#if isActive}}
+                                <div class="active"><i class="fa fa-circle"></i>
+                                <span class="btn-a">Активный</span></div>
+                            {{else}}
+                                <div class="unactive"><i class="fa fa-circle"></i>
+                                <span class="btn-a">Неактивный</span></div>
+                            {{/if}}
+                        </td>
+                        <td class="type">
+                            {{accountType}}
+                            <br><span class="type">Тип счета</span>
+                        </td>
+                        <td>
+                            <a href="#" class="button" onclick="openEditModal('{{id}}')">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

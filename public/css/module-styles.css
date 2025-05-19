@@ -89,3 +89,28 @@ table {
     color: #974943;
     font-weight: bold;
 }
+
+.edit-btn {
+    color: #3e5c4d;
+    font-size: 24px;
+}
+
+.edit-btn:hover {
+    color: #7ea792;
+}
+
+.delete-btn {
+    color: #802e25;
+    font-size: 24px;
+}
+
+.delete-btn:hover {
+    color: #b35d55;
+}
+
+#edit_account_is_active {
+    width: 20px;
+    height: 20px;
+    accent-color: #3e5c4d;
+    cursor: pointer;
+}

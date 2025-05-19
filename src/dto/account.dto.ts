@@ -1,7 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
-export class CreateAccountDto {
+export class AccountDto {
+  @ApiProperty()
+  @IsNotEmpty()
+  id: number;
+
   @ApiProperty()
   @IsNotEmpty()
   title: string;
@@ -13,4 +17,12 @@ export class CreateAccountDto {
   @ApiProperty()
   @IsNotEmpty()
   currency: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  isActive: boolean;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  userId: number;
 }

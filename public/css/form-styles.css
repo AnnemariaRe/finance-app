@@ -12,7 +12,7 @@
 
 .submit {
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 18px 0 0 0 ;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -28,7 +28,6 @@
 .open-button:hover {
     background-color: #4C534C;
 }
-
 
 .container {
     padding: 16px;
@@ -75,7 +74,7 @@ input[type=text], select, input[type=date] {
 }
 
 .accounts-header a:hover {
-    background-color: #DEDEDE;
+    background-color: #6c877a;
 }
 
 .accounts-header a {
@@ -93,5 +92,15 @@ input[type=text], select, input[type=date] {
 }
 
 #check1, #check2 {
+    display: none;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.hidden {
     display: none;
 }

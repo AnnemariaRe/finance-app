@@ -8,6 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Account } from '../entities/account.entity';
+import { Category } from '../entities/category.entity';
 
 @Entity()
 export class User {
@@ -38,4 +39,8 @@ export class User {
   @ApiProperty({ type: () => Account })
   @OneToMany(() => Account, (account) => account.user, { cascade: true })
   accounts: Account[];
+
+  @ApiProperty({ type: () => Category })
+  @OneToMany(() => Category, (category) => category.user, { cascade: true })
+  categories: Category[];
 }

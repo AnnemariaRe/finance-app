@@ -1,6 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter, Logger } from '@nestjs/common';
 import { Request, Response } from 'express';
 import axios from 'axios';
+import * as process from 'node:process';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
@@ -16,8 +17,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     );
 
     if (process.env.NODE_ENV !== 'test') {
-      const botToken = `8043688697:AAHQUtSLrE7xZWNJIQB4RvytMBzA9qHLJFc`;
-      const chatId = -4798165321;
+      const botToken = process.env.BOT_TOKEN;
+      const chatId = process.env.CHAT_ID;
       const errorMessage =
         `⚠️ Error on ${request.method} ${request.url}\n` +
         `${exception.name}: ${exception.message}\n` +

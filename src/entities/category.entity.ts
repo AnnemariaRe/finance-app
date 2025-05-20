@@ -1,13 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { OperationType } from 'src/enums/OperationType';
-import { Transaction } from '../entities/transaction.entity';
 import { User } from 'src/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -33,12 +31,6 @@ export class Category {
   operationType: OperationType;
 
   @ApiProperty({ type: () => User })
-  @ManyToOne(() => User, (user) => user.accounts, { nullable: true })
+  @ManyToOne(() => User)
   user: User;
-
-  @ApiProperty({ type: () => Transaction })
-  @OneToMany(() => Transaction, (transaction) => transaction.category, {
-    cascade: true,
-  })
-  transactions: Transaction[];
 }

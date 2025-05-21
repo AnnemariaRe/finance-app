@@ -12,11 +12,11 @@ button {
 }
 
 .submit {
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    padding: 14px 20px;
+    margin: 18px 0 0 0 ;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .buttons {
@@ -80,7 +80,7 @@ input[type='date'] {
 }
 
 .accounts-header a:hover {
-  background-color: #dedede;
+    background-color: #6c877a;
 }
 
 .accounts-header a {
@@ -102,3 +102,16 @@ input[type='date'] {
   display: none;
 }
 
+#check1, #check2 {
+    display: none;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}

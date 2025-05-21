@@ -11,6 +11,8 @@
                 <div id="createAccountModal" class="modal">
                     <form class="modal-content animate" method="POST" action="/wallet/account">
                         <div class="container">
+                            <h3 class="modal-title">Создать счёт</h3>
+
                             <label for="account_name"><b>Название счета</b></label>
                             <input type="text" name="name" placeholder="Введите название счета" id="account_name" required>
 
@@ -33,14 +35,39 @@
                     </form>
                 </div>
 
-                <script>
-                    var modal = document.getElementById('createAccountModal');
-                    window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
-                </script>
+                <div id="editAccountModal" class="modal">
+                    <form id="editAccountForm" class="modal-content animate" method="POST">
+                        <div class="container">
+                            <h3 class="modal-title">Редактировать счёт</h3>
+
+                            <input type="hidden" name="id" id="edit_account_id">
+                            <!-- Moved hidden input here -->
+
+                            <label for="edit_account_name"><b>Название счета</b>{{name}}</label>
+                            <input type="text" name="name" id="edit_account_name" required>
+
+                            <label for="edit_currency"><b>Валюта</b></label>
+                            <select name="currency" id="edit_currency_select">
+                                {{#each viewData.currencies}}
+                                    <option>{{name}}</option> 
+                                {{/each}}
+                            </select>
+
+                            <label for="edit_account_type"><b>Тип счета</b></label>
+                            <select name="accountType" id="edit_account_type_select">
+                                {{#each viewData.accountTypes}}
+                                    <option>{{this}}</option> 
+                                {{/each}}
+                            </select>
+                            <label for="edit_account_is_active">
+                                <b>Счёт активен</b>
+                                <input type="checkbox" name="isActive" id="edit_account_is_active">
+                            </label>
+
+                            <button class="submit" type="submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="accounts-body">
@@ -48,7 +75,10 @@
                     {{#each viewData.accounts}}
                     <tr>
                         <td>
-                            <div class="icon"><i class="fa fa-fa-bank"></i></div>
+                            <div class="icon"><i class="fa fa-bank"></i></div>
+                        </td>
+                        <td class="hidden">
+                            {{id}}
                         </td>
                         <td>
                             {{title}}
@@ -76,9 +106,14 @@
                             <br><span class="type">Тип счета</span>
                         </td>
                         <td>
-                            <a href="#" class="button" onclick="openEditModal('{{id}}')">
-                                <i class="fa fa-edit"></i>
+                            <a href="#" class="button" onclick="openEditModal('{{id}}', '{{title}}', '{{currency.name}}', '{{accountType}}', '{{isActive}}')">
+                                <div class="edit-btn"><i class="fa fa-pencil"></i></div>
                             </a>
+                        </td>
+                        <td>
+                            <a href="#" class="button delete-btn" onclick="deleteAccount('{{id}}')">
+                                <div class="delete-btn"><i class="fa fa-trash"></i></div>
+                            </a>  
                         </td>
                     </tr>
                     {{/each}}

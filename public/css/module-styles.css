@@ -185,31 +185,40 @@ table {
   border-color: transparent;
 }
 
-.exchange-table {
-  border: 2px solid #c5ceb6;
-  margin-left: auto;
-  margin-right: auto;
+.active, .active .btn-a {
+    color: #459743;
+    font-weight: bold;
 }
 
-.exchange-table td {
-  background-color: white;
-  padding: 10px 68px;
+.unactive, .unactive .btn-a {
+    color: #974943;
+    font-weight: bold;
 }
-
-.exchange-table th {
-  background-color: white;
-  border-top: 2px solid #c5ceb6;
-  border-bottom: 2px solid #c5ceb6;
-  color: #344e41;
-  padding: 13px;
-  text-align: center;
-}
-
-.exchange table td:nth-child(even) {
-  background-color: white;
-}
-
 .menu-bar .title {
-  position: relative;
+    position: relative;
+  }
+
+.edit-btn {
+    color: #3e5c4d;
+    font-size: 24px;
 }
 
+.edit-btn:hover {
+    color: #7ea792;
+}
+
+.delete-btn {
+    color: #802e25;
+    font-size: 24px;
+}
+
+.delete-btn:hover {
+    color: #b35d55;
+}
+
+#edit_account_is_active {
+    width: 20px;
+    height: 20px;
+    accent-color: #3e5c4d;
+    cursor: pointer;
+}

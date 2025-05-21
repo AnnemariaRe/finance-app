@@ -2,7 +2,7 @@ import { Controller, Get, Render } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OperationType } from 'src/enums/OperationType';
 import TransactionsService from 'src/transactions/transactions.service';
-import axios from axios
+import axios from 'axios';
 
 @Controller('history')
 @ApiTags('history page')

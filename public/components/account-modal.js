@@ -5,7 +5,7 @@ function openEditModal(id, name, currency, accountType, isActive) {
     document.getElementById('edit_account_type_select').value = accountType;
     document.getElementById('edit_account_is_active').checked = isActive;
 
-    document.getElementById('editAccountForm').action = `/wallet/account`;
+    document.getElementById('editAccountForm').action = `/wallet/account/edit`;
 
     document.getElementById('editAccountModal').style.display = 'block';
 }
@@ -24,7 +24,7 @@ async function deleteAccount(accountId) {
         window.location.reload();
       }
     } catch (error) {
-      alert('Ошибка соединения с сервером: ' + error.message);
+      alert('Ошибка при попытке удаления счёта: ' + error.message);
     }
   }
 

@@ -45,15 +45,26 @@ export class WalletController {
     return { viewData };
   }
 
-  @Post('/id')
-  @Render('wallet')
+  @Get('/id')
   async getAccountById(id: number) {
     return { viewData: await this.accountsService.findById(id) };
   }
 
   @Post('/account')
-  @Render('wallet')
   async create(@Body() body, @Res() response) {
+    const accountDto = new AccountDto();
+    accountDto.title = body.name;
+    accountDto.currency = body.currency;
+    accountDto.accountType = body.accountType;
+    accountDto.userId = 1; // TODO: get userId from session
+
+    await this.accountsService.create(accountDto);
+
+    return response.redirect('/wallet');
+  }
+
+  @Post('/account/edit')
+  async update(@Body() body, @Res() response) {
     const accountDto = new AccountDto();
     accountDto.id = body.id;
     accountDto.title = body.name;
@@ -62,7 +73,7 @@ export class WalletController {
     accountDto.isActive = body.isActive === 'on';
     accountDto.userId = 1; // TODO: get userId from session
 
-    await this.accountsService.create(accountDto);
+    await this.accountsService.update(accountDto);
 
     return response.redirect('/wallet');
   }

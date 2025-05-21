@@ -13,6 +13,9 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - DB_URL=postgres://user:pg_password@db/postgres_db
+      - BOT_TOKEN=8043688697:AAHQUtSLrE7xZWNJIQB4RvytMBzA9qHLJFc
+      - CHAT_ID=-4798165321
     restart: unless-stopped
     networks:
       - app_network

@@ -5,10 +5,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  OneToMany,
 } from 'typeorm';
-import { Account } from '../entities/account.entity';
-import { Category } from '../entities/category.entity';
+import { IsEmail } from 'class-validator';
 
 @Entity()
 export class User {
@@ -25,6 +23,7 @@ export class User {
   updatedAt: Date;
 
   @ApiProperty()
+  @IsEmail()
   @Column()
   email: string;
 
@@ -35,12 +34,4 @@ export class User {
   @ApiProperty()
   @Column()
   password: string;
-
-  @ApiProperty({ type: () => Account })
-  @OneToMany(() => Account, (account) => account.user, { cascade: true })
-  accounts: Account[];
-
-  @ApiProperty({ type: () => Category })
-  @OneToMany(() => Category, (category) => category.user, { cascade: true })
-  categories: Category[];
 }

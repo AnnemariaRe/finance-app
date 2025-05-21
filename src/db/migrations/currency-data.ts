@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CurrencyTable1747472320382 implements MigrationInterface {
+export class CurrencyTable9999999999998 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
           INSERT INTO currency (name, code, symbol, "createdAt") VALUES

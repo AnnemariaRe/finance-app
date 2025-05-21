@@ -1,10 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Account } from '../entities/account.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -29,8 +27,4 @@ export class Currency {
   @ApiProperty()
   @Column({ type: 'char' })
   symbol: string;
-
-  @ApiProperty({ type: () => Account })
-  @OneToMany(() => Account, (account) => account.currency, { cascade: true })
-  accounts: Account[];
 }

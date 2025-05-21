@@ -32,7 +32,7 @@ export class HistoryController {
       }
 
       const currency = transaction.account.currency.code;
-      let amountInRUB;
+      let amountInRUB: number;
 
       try {
         if (currency != 'RUB') {
@@ -49,10 +49,7 @@ export class HistoryController {
         amountInRUB = transaction.amount;
       }
 
-      if (
-        transaction.date?.substring(5, 7) ==
-        String(now.getMonth() + 1).padStart(2, '0')
-      ) {
+      if (transaction.date.getMonth() == now.getMonth()) {
         const category = transaction.category.name;
         if (transaction.category.operationType == OperationType.EXPENSE) {
           expensesByCategory[category] =

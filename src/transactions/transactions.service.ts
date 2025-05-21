@@ -47,22 +47,9 @@ export default class TransactionsService {
   }
 
   async findAllTransactionsByUserId(userId: number) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: [
-        'accounts.transactions.category',
-        'accounts.transactions.account.currency',
-      ],
+    return await this.transactionRepository.find({
+      relations: ['account', 'user'],
+      where: { account: { user: { id: userId } } },
     });
-    if (user && user.accounts != null) {
-      const transactions = user.accounts.reduce((acc, account) => {
-        if (account.transactions != null) {
-          acc.push(...account.transactions);
-        }
-        return acc;
-      }, []);
-
-      return transactions;
-    }
   }
 }

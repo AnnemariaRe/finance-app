@@ -58,24 +58,22 @@ export default class AccountsService {
   }
 
   async findAll() {
-    const account = await this.accountRepository.find();
-    return account;
+    return await this.accountRepository.find();
   }
 
   async findAllActiveByUserId(userId: number) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: ['accounts'],
+    return await this.accountRepository.find({
+      relations: ['user'],
+      where: { user: { id: userId }, isActive: true },
     });
-    return user.accounts;
   }
 
   async findAllByUserId(userId: number) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: ['accounts.currency'],
+    return await this.accountRepository.find({
+      relations: ['user'],
+      where: { user: { id: userId } },
+      order: { createdAt: 1 },
     });
-    if (user && user.accounts != null) return user.accounts;
   }
 
   async delete(id: number) {

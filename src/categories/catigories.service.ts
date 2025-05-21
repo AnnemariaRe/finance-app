@@ -1,20 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
+import { Category } from '../entities/category.entity';
 
 @Injectable()
 export default class CategoriesService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(Category)
+    private readonly categoryRepository: Repository<Category>,
   ) {}
 
   async findCategoriesByUserId(userId: number) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      relations: ['categories'],
+    return this.categoryRepository.find({
+      relations: ['user'],
+      where: { user: { id: userId } },
     });
-    return user.categories;
   }
 }

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class SeedUserTable1715960000000 implements MigrationInterface {
+export class SeedUserTable9999999999999 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
         INSERT INTO "user" (email, name, password, "createdAt", "updatedAt") VALUES

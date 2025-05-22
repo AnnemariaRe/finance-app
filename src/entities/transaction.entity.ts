@@ -24,7 +24,7 @@ export class Transaction {
   amount: number;
 
   @ApiProperty()
-  @Column({ type: 'date' })
+  @Column({ type: 'timestamptz' })
   date: Date;
 
   @ApiProperty({ type: () => Account })

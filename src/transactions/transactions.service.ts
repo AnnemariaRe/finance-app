@@ -23,12 +23,11 @@ export default class TransactionsService {
 
   async create(userId: number, createTransactionDto: CreateTransactionDto) {
     const { amount, date, account, category } = createTransactionDto;
-    const user = await this.userRepository.findOne({ where: { id: userId } });
     const _account = await this.accountRepository.findOne({
-      where: { user: user, title: account },
+      where: { user: { id: userId }, title: account },
     });
     const _category = await this.categoryRepository.findOne({
-      where: { user: user, name: category },
+      where: { user: { id: userId }, name: category },
     });
 
     const transaction = new Transaction();
@@ -48,7 +47,7 @@ export default class TransactionsService {
 
   async findAllTransactionsByUserId(userId: number) {
     return await this.transactionRepository.find({
-      relations: ['account', 'user'],
+      relations: { account: { user: true, currency: true }, category: true },
       where: { account: { user: { id: userId } } },
     });
   }

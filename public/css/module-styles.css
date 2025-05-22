@@ -185,6 +185,30 @@ table {
   border-color: transparent;
 }
 
+.exchange-table {
+    border: 2px solid #C5CEB6;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.exchange-table td {
+    background-color: white;
+    padding: 10px 68px;
+}
+
+.exchange-table th {
+    background-color:white;
+    border-top: 2px solid #C5CEB6;
+    border-bottom: 2px solid #C5CEB6;
+    color: #344e41;
+    padding: 13px;
+    text-align: center;
+}
+
+.exchange table td:nth-child(even) {
+    background-color: white;
+}
+
 .active, .active .btn-a {
     color: #459743;
     font-weight: bold;

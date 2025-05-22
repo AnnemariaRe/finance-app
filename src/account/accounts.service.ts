@@ -25,31 +25,31 @@ export default class AccountsService {
       where: { name: currency },
     });
     const accountTypeEnum = this.mapAccountType(accountType);
-  
+
     const account = new Account();
     account.title = title;
     account.currency = currencyEntity;
     account.accountType = accountTypeEnum;
     account.user = user;
     account.isActive = true;
-  
+
     return this.accountRepository.save(account);
   }
 
   async update(accountDto: AccountDto) {
-    const { id, title, accountType, currency, userId, isActive } = accountDto;
-    const user = await this.userRepository.findOne({ where: { id: userId } });
+    const { id, title, accountType, currency, isActive } = accountDto;
+
     const currencyEntity = await this.currencyRepository.findOne({
       where: { name: currency },
     });
     const accountTypeEnum = this.mapAccountType(accountType);
-  
-    let account = await this.accountRepository.findOne({ where: { id } });
+
+    const account = await this.accountRepository.findOne({ where: { id } });
     account.title = title;
     account.currency = currencyEntity;
     account.accountType = accountTypeEnum;
     account.isActive = isActive;
-  
+
     return this.accountRepository.save(account);
   }
 
@@ -63,14 +63,14 @@ export default class AccountsService {
 
   async findAllActiveByUserId(userId: number) {
     return await this.accountRepository.find({
-      relations: ['user'],
+      relations: { user: true },
       where: { user: { id: userId }, isActive: true },
     });
   }
 
   async findAllByUserId(userId: number) {
     return await this.accountRepository.find({
-      relations: ['user'],
+      relations: { user: true, currency: true },
       where: { user: { id: userId } },
       order: { createdAt: 1 },
     });

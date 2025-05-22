@@ -1,0 +1,185 @@
+<div class="content">
+  <script src="components/index-onload.js" type="text/javascript"></script>
+  <section class="first-block">
+    <div class="heading">
+      <h1>WalletKeeper</h1>
+    </div>
+
+    <div class="buttons">
+      <a class="open-button" onclick="document.getElementById('id01').style.display='block'">
+        <i class="fa fa-minus"></i>
+        <span class="btn-text">Снять</span>
+      </a>
+
+      <a class="open-button" onclick="document.getElementById('id02').style.display='block'">
+        <i class="fa fa-plus"></i>
+        <span class="btn-text">Положить</span>
+      </a>
+
+      <div id="id01" class="modal">
+        <form class="modal-content animate" method="POST" action="/transaction">
+          <div class="container">
+            <label for="expense_amount"><b>Сумма</b></label>
+            <input type="text" name="amount" placeholder="Введите потраченную сумму" id="expense_amount" required>
+
+            <label for="expense_category"><b>Категория</b></label>
+            <select id="expense_category" name="category">
+              {{#each viewData.expenseCategories}}
+                <option>{{name}}</option>
+              {{/each}}
+            </select>
+
+            <label for="account"><b>Счет списания</b></label>
+            <select id="account1" name="account">
+              {{#each viewData.accounts}}
+                <option>{{title}}</option>
+              {{/each}}
+            </select>
+
+            <label for="date"><b>Дата транзакции</b></label><br>
+            <input type="date" id="today1" name="date">
+            <script>
+              document.getElementById('today1').valueAsDate = new Date();
+            </script>
+            <br>
+
+            <button class="submit" type="submit">Отправить</button>
+            <select id="check1">
+              <option selected>-</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div id="id02" class="modal">
+        <form class="modal-content animate" method="POST" action="/transaction">
+          <div class="container">
+            <label for="income_amount"><b>Сумма</b></label>
+            <input type="text" name="amount" placeholder="Введите полученную сумму" id="income_amount" required>
+
+            <label for="income_category"><b>Категория</b></label>
+            <select id="income_category" name="category">
+              {{#each viewData.incomeCategories}}
+                <option>{{name}}</option>
+              {{/each}}
+            </select>
+
+            <label for="account"><b>Счет зачисления</b></label>
+            <select id="account2" name="account">
+              {{#each viewData.accounts}}
+                <option>{{title}}</option>
+              {{/each}}
+            </select>
+
+            <label for="date"><b>Дата транзакции</b></label><br>
+            <input type="date" id="today2" name="date">
+            <script>
+              document.getElementById('today2').valueAsDate = new Date();
+            </script>
+            <br>
+
+            <button class="submit" type="submit">Отправить</button>
+            <select id="check2">
+              <option selected>+</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <script>
+        var modal1 = document.getElementById('id01');
+        var modal2 = document.getElementById('id02');
+
+        window.onclick = function(event) {
+          if (event.target == modal1) {
+            modal1.style.display = 'none';
+          }
+          if (event.target == modal2) {
+            modal2.style.display = 'none';
+          }
+        };
+      </script>
+    </div>
+  </section>
+
+  <section class="second-block">
+    <section class="balance-all">
+      <div class="balance-item">
+        <h4>Всего средств: {{viewData.totalAmount}} ₽</h4>
+      </div>
+      <div class="balance-item">
+        <h4>Доступно сейчас: {{viewData.availableNow}} ₽</h4>
+      </div>
+      <div class="balance-item">
+        <h4>Сбережения: {{viewData.totalSavings}} ₽</h4>
+      </div>
+    </section>
+
+    <section class="graph-expense">
+      <h3>Траты последние 10 дней</h3>
+      <div style="max-width:650px">
+        <canvas id="expenses_chart"></canvas>
+      </div>
+      <script>
+        new Chart('expenses_chart', {
+          type: 'bar',
+          data: {
+            labels: [{{viewData.dayValues}}],
+            datasets: [{
+              backgroundColor: ['#C5CEB6', '#C5CEB6', '#C5CEB6', '#C5CEB6',
+                '#C5CEB6', '#C5CEB6', '#C5CEB6', '#C5CEB6',
+                '#C5CEB6', '#C5CEB6'],
+              data: [{{viewData.chartData}}],
+            }],
+          },
+          options: {
+            legend: { display: false },
+          },
+        });
+      </script>
+    </section>
+  </section>
+
+  <section class="third-block">
+    <section class="history-list">
+      <table id="history">
+        <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Категория</th>
+          <th>Количество</th>
+          <th>Счет</th>
+        </tr>
+        </thead>
+        <tbody id="main">
+        {{#each viewData.transactions}}
+          <tr>
+            <td>{{date}}</td>
+            <td>{{category.name}}</td>
+            <td>{{amount}} {{account.currency.symbol}}</td>
+            <td>{{account.title}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="month-balance-all">
+      <div class="exchange">
+        <table class="exchange-table" id="exchange">
+          <tr>
+            <th>Валюта</th>
+            <th>Курс</th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="month-balance-item">
+        <h4>расход за месяц: {{viewData.monthExpense}} ₽</h4>
+      </div>
+      <div class="month-balance-item">
+        <h4>доход за месяц: {{viewData.monthIncome}} ₽</h4>
+      </div>
+    </section>
+  </section>
+</div>

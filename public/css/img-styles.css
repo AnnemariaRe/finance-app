@@ -1,0 +1,51 @@
+.graph-expense {
+    width: 50%;
+    margin-top: -360px;
+    margin-right: 50px;
+    float: right;
+}
+
+.graph-expense h3 {
+    margin: 5px;
+    text-align: center;
+}
+
+.graph {
+    width: 80%;
+    padding: 4px;
+}
+
+img {
+    padding: 30px 40px;
+    width: 100px;
+    height: 100px;
+}
+
+.icon {
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+    font-size: 34px;
+    padding-top: 10px;
+    border-radius: 8px;
+    color: #344e41;
+}
+
+.active, .active .btn-a {
+    color: #459743;
+    font-weight: bold;
+}
+
+.unactive, .unactive .btn-a {
+    color: #974943;
+    font-weight: bold;
+}
+
+.accounts-body table td a {
+    color: #344e41;
+    font-size: 22px;
+}
+
+.accounts-body table td a:hover {
+    color: #738673;
+}

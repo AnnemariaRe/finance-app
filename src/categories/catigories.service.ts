@@ -10,9 +10,13 @@ export default class CategoriesService {
     private readonly categoryRepository: Repository<Category>,
   ) {}
 
+  async findAll() {
+    return this.categoryRepository.find();
+  }
+
   async findCategoriesByUserId(userId: number) {
     return this.categoryRepository.find({
-      relations: ['user'],
+      relations: { user: true },
       where: { user: { id: userId } },
     });
   }

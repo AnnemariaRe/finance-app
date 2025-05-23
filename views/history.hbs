@@ -5,19 +5,19 @@
       <table id='history2'>
         <thead>
         <tr>
+          <th>Дата</th>
           <th>Категория</th>
           <th>Количество</th>
           <th>Счет</th>
-          <th>Дата</th>
         </tr>
         </thead>
         <tbody id='main'>
         {{#each viewData.transactions}}
           <tr>
+            <td>{{date}}</td>
             <td>{{category.name}}</td>
             <td>{{amount}} {{account.currency.symbol}}</td>
             <td>{{account.title}}</td>
-            <td>{{date}}</td>
           </tr>
         {{/each}}
         </tbody>

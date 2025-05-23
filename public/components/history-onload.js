@@ -5,6 +5,7 @@ window.onload = function () {
             "lengthChange": false,
             "pageLength": 20,
             "processing": true,
+            order: [[0, 'desc']],
             language: {
                 zeroRecords: 'Ничего не найдено',
                 infoEmpty: 'Нет доступных записей',

@@ -34,7 +34,7 @@ describe('End to end tests', () => {
 
   test('GET /hello renders demo page', () => {
     return request(app.getHttpServer())
-      .get('/hello')
+      .get('/demo/hello')
       .expect(200)
       .expect((res) => {
         expect(res.text).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('End to end tests', () => {
 
   test('GET /error renders error page', () => {
     return request(app.getHttpServer())
-      .get('/error')
+      .get('/demo/error')
       .expect(200)
       .expect((res) => {
         expect(res.text).toMatchSnapshot();

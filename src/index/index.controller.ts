@@ -13,7 +13,7 @@ import { OperationType } from 'src/enums/OperationType';
 import { AccountType } from 'src/enums/AccountType';
 import axios from 'axios';
 import AccountsService from '../account/accounts.service';
-import CategoriesService from '../categories/catigories.service';
+import CategoriesService from '../categories/categories.service';
 import TransactionsService from '../transactions/transactions.service';
 import * as process from 'node:process';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';

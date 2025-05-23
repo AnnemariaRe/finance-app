@@ -1,0 +1,39 @@
+<div class="categories-container">
+      <aside class="category-list-box">
+        <h2>Категории</h2>
+        <ul>
+          {{#each categories}}
+            <li>{{this.name}} — {{this.operationType}}</li>
+          {{/each}}
+        </ul>
+      </aside>
+
+      <div class="add-button-container">
+        <button id="openModalBtn">Добавить категорию</button>
+      </div>
+    </div>
+
+<div id="categoryModal" class="modal">
+    <div class="modal-content">
+      <h3>Новая категория</h3>
+      <form action="/categories/create" method="POST">
+        <input type="text" name="name" placeholder="Название категории" required>
+        <select name="operationType" required>
+          <option value="income">Доход</option>
+          <option value="expense">Расход</option>
+        </select>
+        <button type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+    <script>
+    const modal = document.getElementById('categoryModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.querySelector('.modal .close');
+
+    openBtn.onclick = () => modal.style.display = 'block';
+    window.onclick = (event) => {
+      if (event.target == modal) modal.style.display = 'none';
+    };
+  </script>

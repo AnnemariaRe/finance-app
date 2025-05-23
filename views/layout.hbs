@@ -10,13 +10,17 @@
 
 <body>
 <header>
-  {{>navbar}}
+  {{#unless (startsWith currentPath "/auth")}}
+    {{>navbar}}
+  {{/unless}}
 </header>
 <main>
   {{{body}}}
 </main>
 <footer>
-  {{>footer}}
+  {{#unless (startsWith currentPath "/auth")}}
+    {{>footer}}
+  {{/unless}}
 </footer>
 </body>
 

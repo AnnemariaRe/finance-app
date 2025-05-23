@@ -5,19 +5,22 @@ import {
   Inject,
   Post,
   Render,
+  Req,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateTransactionDto } from '../dto/create-transaction.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { OperationType } from 'src/enums/OperationType';
 import { AccountType } from 'src/enums/AccountType';
 import axios from 'axios';
-import AccountsService from '../account/accounts.service';
-import CategoriesService from '../categories/catigories.service';
-import TransactionsService from '../transactions/transactions.service';
+import { AccountsService } from '../account/accounts.service';
+import { CategoriesService } from '../categories/categories.service';
+import { TransactionsService } from '../transactions/transactions.service';
 import * as process from 'node:process';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('')
 @ApiTags('index page')
@@ -30,24 +33,26 @@ export class IndexController {
   ) {}
 
   @Post('/transaction')
-  async create(@Body() body, @Res() response) {
+  async create(@Body() body, @Req() req, @Res() response) {
     const transactionDto = new CreateTransactionDto();
     transactionDto.amount = body.amount;
     transactionDto.date = new Date(body.date as string);
     transactionDto.account = body.account;
     transactionDto.category = body.category;
 
-    await this.transactionsService.create(1, transactionDto);
+    await this.transactionsService.create(req.user.id, transactionDto);
 
     return response.redirect('/');
   }
 
+  @UseGuards(AuthGuard)
   @Get('/')
   @Render('index')
-  async getTransactions() {
+  async getTransactions(@Req() req) {
+    const userId = req.user.id;
     const viewData = [];
-    viewData['accounts'] = await this.accountsService.findAllActiveByUserId(1);
-    const categories = await this.categoriesService.findAll();
+    viewData['accounts'] = await this.accountsService.findAllActiveByUserId(userId);
+    const categories = await this.categoriesService.findCategoriesByUserId(userId);
     viewData['expenseCategories'] = categories.filter(
       (category) => category.operationType === OperationType.EXPENSE,
     );
@@ -55,7 +60,7 @@ export class IndexController {
       (category) => category.operationType === OperationType.INCOME,
     );
     const transactions =
-      await this.transactionsService.findAllTransactionsByUserId(1);
+      await this.transactionsService.findAllTransactionsByUserId(userId);
     viewData['transactions'] = transactions.map((transaction) => {
       return {
         id: transaction.id,

@@ -6,6 +6,9 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { GlobalExceptionFilter } from './global-exception.filter';
 import { join } from 'path';
 import hbs from 'hbs';
+import session from 'express-session';
+import { UnauthorizedExceptionFilter } from './unauthorized-exception.filter';
+import passport from 'passport';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
@@ -19,12 +22,30 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new GlobalExceptionFilter());
+  app.useGlobalFilters(new GlobalExceptionFilter(), new UnauthorizedExceptionFilter());
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
+  hbs.registerHelper('startsWith', function (str, prefix) {
+    return str.startsWith(prefix);
+  });
+  
+  app.use(
+    session({
+      secret: 'aboba',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { secure: false }
+    }),
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use((req, res, next) => {
+    res.locals.currentPath = req.path;
+    next();
+  });
 
   await app.listen(process.env.PORT ?? 3000);
   logger.log(`Application is running on: ${await app.getUrl()}`);

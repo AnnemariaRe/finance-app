@@ -6,13 +6,16 @@ import {
   HttpStatus,
   Post,
   Render,
+  Req,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AccountType } from '../enums/AccountType';
-import AccountsService from '../account/accounts.service';
+import { AccountsService } from '../account/accounts.service';
 import { CurrenciesService } from '../currency/currencies.service';
 import { AccountDto } from '../dto/account.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('wallet')
 @ApiTags('wallet page')
@@ -22,9 +25,11 @@ export class WalletController {
     private readonly currenciesService: CurrenciesService,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Get('/')
   @Render('wallet')
-  async getAccounts() {
+  async getAccounts(@Req() req) {
+    const userId = req.user.id;
     const viewData = {};
     viewData['currencies'] = await this.currenciesService.findAll();
     viewData['accountTypes'] = [
@@ -33,7 +38,7 @@ export class WalletController {
       AccountType.CASH,
       AccountType.SAVINGS,
     ];
-    const accounts = (await this.accountsService.findAllByUserId(1)) ?? [];
+    const accounts = (await this.accountsService.findAllByUserId(userId)) ?? [];
 
     const accountsWithTotalAmount = accounts.map((account) => {
       const totalAmount = 0;
@@ -51,12 +56,12 @@ export class WalletController {
   }
 
   @Post('/account')
-  async create(@Body() body, @Res() response) {
+  async create(@Body() body, @Req() req, @Res() response) {
     const accountDto = new AccountDto();
     accountDto.title = body.name;
     accountDto.currency = body.currency;
     accountDto.accountType = body.accountType;
-    accountDto.userId = 1; // TODO: get userId from session
+    accountDto.userId = req.user.id;
 
     await this.accountsService.create(accountDto);
 
@@ -71,7 +76,6 @@ export class WalletController {
     accountDto.currency = body.currency;
     accountDto.accountType = body.accountType;
     accountDto.isActive = body.isActive === 'on';
-    accountDto.userId = 1; // TODO: get userId from session
 
     await this.accountsService.update(accountDto);
 

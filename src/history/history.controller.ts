@@ -1,20 +1,23 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OperationType } from 'src/enums/OperationType';
-import TransactionsService from 'src/transactions/transactions.service';
+import { TransactionsService } from 'src/transactions/transactions.service';
 import axios from 'axios';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('history')
 @ApiTags('history page')
 export class HistoryController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
+  @UseGuards(AuthGuard)
   @Get('/')
   @Render('history')
-  async getTransactions() {
+  async getTransactions(@Req() req) {
+    const userId = req.user.id;
     const viewData = [];
     const transactions =
-      (await this.transactionsService.findAllTransactionsByUserId(1)) || [];
+      (await this.transactionsService.findAllTransactionsByUserId(userId)) || [];
     viewData['transactions'] = transactions.reverse();
 
     if (transactions.length === 0) {

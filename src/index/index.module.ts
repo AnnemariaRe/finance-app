@@ -6,9 +6,9 @@ import { Category } from 'src/entities/category.entity';
 import { User } from 'src/entities/user.entity';
 import { IndexController } from './index.controller';
 import { Currency } from 'src/entities/currency.entity';
-import AccountsService from '../account/accounts.service';
-import CategoriesService from '../categories/catigories.service';
-import TransactionsService from '../transactions/transactions.service';
+import { AccountsService } from '../account/accounts.service';
+import { TransactionsService } from '../transactions/transactions.service';
+import { CategoriesService } from 'src/categories/categories.service';
 
 @Module({
   imports: [

@@ -97,15 +97,6 @@ input[type='date'] {
   border-radius: 5px;
 }
 
-#check1,
-#check2 {
-  display: none;
-}
-
-#check1, #check2 {
-    display: none;
-}
-
 .modal-title {
     display: flex;
     justify-content: center;

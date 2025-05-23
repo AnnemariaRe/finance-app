@@ -4,22 +4,22 @@
     <section class='history-list'>
       <table id='history2'>
         <thead>
-          <tr>
-            <th>Категория</th>
-            <th>Количество</th>
-            <th>Счет</th>
-            <th>Дата</th>
-          </tr>
+        <tr>
+          <th>Дата</th>
+          <th>Категория</th>
+          <th>Количество</th>
+          <th>Счет</th>
+        </tr>
         </thead>
         <tbody id='main'>
-          {{#each viewData.transactions}}
-            <tr>
-              <td>{{category.name}}</td>
-              <td>{{amount}} {{account.currency.symbol}}</td>
-              <td>{{account.title}}</td>
-              <td>{{date}}</td>
-            </tr>
-          {{/each}}
+        {{#each viewData.transactions}}
+          <tr>
+            <td>{{date}}</td>
+            <td>{{category.name}}</td>
+            <td>{{amount}} {{account.currency.symbol}}</td>
+            <td>{{account.title}}</td>
+          </tr>
+        {{/each}}
         </tbody>
       </table>
     </section>
@@ -30,23 +30,42 @@
         <canvas id='myChart' style='width:100%;max-width:700px'></canvas>
 
         <script>
-          var colors = ["#e9f5db", "#cfe1b9", "#b5c99a", "#97a97c", "#588157",
-          "#718355", "#31572c"] function generateRandomColor(colors, n) { var
-          random = []; for (let i = 0; i < n; i++) { j =
-          Math.floor(Math.random() * colors.length); random[i] = colors[j];
-          colors.splice(j, 1); } return random; } var xValues = []; var yValues
-          = []; for (let i = 0; i <
-          {{viewData.expenseLength}}; i++) {
+          const colors = ['#e9f5db', '#cfe1b9', '#b5c99a', '#97a97c', '#588157',
+            '#718355', '#31572c'];
+
+          function generateRandomColor(colors, n) {
+            const random = [];
+            for (let i = 0; i < n; i++) {
+              let j = Math.floor(Math.random() * colors.length);
+              random[i] = colors[j];
+              colors.splice(j, 1);
+            }
+            return random;
+          }
+
+          const xValues = [];
+          const yValues = [];
+
           {{#each viewData.expense_xValues}}
-            xValues[i] = "{{this}}"
+            xValues.push("{{this}}");
           {{/each}}
           {{#each viewData.expense_yValues}}
-            yValues[i] = "{{this}}"
+            yValues.push("{{this}}");
           {{/each}}
-          } new Chart("myChart", { type: "pie", data: { labels: xValues,
-          datasets: [{ backgroundColor: generateRandomColor(colors,
-          {{viewData.expenseLength}}), data: yValues }] }, options: { legend: {
-          position: 'right', } } });
+
+          new Chart('myChart', {
+            type: 'pie', data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: generateRandomColor(colors,
+                  {{viewData.expenseLength}}), data: yValues,
+              }],
+            }, options: {
+              legend: {
+                position: 'right',
+              },
+            },
+          });
         </script>
       </div>
 
@@ -55,22 +74,31 @@
         <canvas id='myChart2' style='width:100%;max-width:700px'></canvas>
 
         <script>
-          var colors = ["#f9dc5c", "#fae588", "#fcefb4", "#f9dc5c", "#cca000"]
-          function generateRandomColor(colors, n) { var random = []; for (let i
-          = 0; i < n; i++) { j = Math.floor(Math.random() * colors.length);
-          random[i] = colors[j]; colors.splice(j, 1); } return random; } var
-          xValues = []; var yValues = []; for (let i = 0; i <
-          {{viewData.incomeLength}}; i++) {
+          const colors2 = ['#f9dc5c', '#fae588', '#fcefb4', '#f9dc5c', '#cca000'];
+
+          const xValues2 = [];
+          const yValues2 = [];
+
           {{#each viewData.income_xValues}}
-            xValues[i] = "{{this}}"
+            xValues2.push("{{this}}");
           {{/each}}
           {{#each viewData.income_yValues}}
-            yValues[i] = "{{this}}"
+            yValues2.push("{{this}}");
           {{/each}}
-          } new Chart("myChart2", { type: "pie", data: { labels: xValues,
-          datasets: [{ backgroundColor: generateRandomColor(colors,
-          {{viewData.incomeLength}}), data: yValues }] }, options: { legend: {
-          position: 'right', } } });
+
+          new Chart('myChart2', {
+            type: 'pie', data: {
+              labels: xValues2,
+              datasets: [{
+                backgroundColor: generateRandomColor(colors2, {{viewData.incomeLength}}),
+                data: yValues2,
+              }],
+            }, options: {
+              legend: {
+                position: 'right',
+              },
+            },
+          });
         </script>
       </div>
     </div>

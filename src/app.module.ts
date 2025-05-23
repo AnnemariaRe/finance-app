@@ -9,6 +9,10 @@ import { WalletModule } from './wallet/wallet.module';
 import { HistoryModule } from './history/history.module';
 import { DemoModule } from './demo/demo.module';
 import { ConfigModule } from '@nestjs/config';
+import { CacheModule } from '@nestjs/cache-manager';
+import { IndexModule } from './index/index.module';
+
+const ONE_HOUR_IN_MS = 1000 * 60 * 60;
 
 @Module({
   providers: [
@@ -20,8 +24,10 @@ import { ConfigModule } from '@nestjs/config';
   ],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    CacheModule.register({ ttl: ONE_HOUR_IN_MS, isGlobal: true }),
     DemoModule,
     UsersModule,
+    IndexModule,
     WalletModule,
     HistoryModule,
     TypeOrmModule.forRoot({

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { OperationType } from 'src/enums/OperationType';
-import { User } from 'src/entities/user.entity';
+import { OperationType } from '../enums/OperationType';
+import { User } from './user.entity';
 import {
   Column,
   CreateDateColumn,

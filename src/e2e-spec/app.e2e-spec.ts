@@ -6,6 +6,12 @@ import hbs from 'hbs';
 import { DemoModule } from '../demo/demo.module';
 import { ValidationPipe } from '@nestjs/common';
 import { GlobalExceptionFilter } from '../global-exception.filter';
+import { UnauthorizedExceptionFilter } from '../unauthorized-exception.filter';
+import axios from 'axios';
+
+jest.mock('axios');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('End to end tests', () => {
   let app: NestExpressApplication;
@@ -18,8 +24,18 @@ describe('End to end tests', () => {
     app = moduleFixture.createNestApplication({ logger: false });
 
     app.useGlobalPipes(new ValidationPipe());
-    app.useGlobalFilters(new GlobalExceptionFilter());
+    app.useGlobalFilters(
+      new GlobalExceptionFilter(),
+      new UnauthorizedExceptionFilter(),
+    );
+    hbs.registerHelper('startsWith', function (str, prefix) {
+      return str.startsWith(prefix);
+    });
 
+    app.use((req, res, next) => {
+      res.locals.currentPath = req.path;
+      next();
+    });
     app.useStaticAssets(join(__dirname, '..', '..', 'public'));
     app.setBaseViewsDir(join(__dirname, '..', '..', 'views'));
     app.setViewEngine('hbs');
@@ -32,7 +48,7 @@ describe('End to end tests', () => {
     await app.close();
   });
 
-  test('GET /hello renders demo page', () => {
+  test('GET /demo/hello renders demo page', () => {
     return request(app.getHttpServer())
       .get('/demo/hello')
       .expect(200)
@@ -41,7 +57,7 @@ describe('End to end tests', () => {
       });
   });
 
-  test('GET /error renders error page', () => {
+  test('GET /demo/error renders error page', () => {
     return request(app.getHttpServer())
       .get('/demo/error')
       .expect(200)

@@ -17,6 +17,7 @@ services:
       - BOT_TOKEN=8043688697:AAHQUtSLrE7xZWNJIQB4RvytMBzA9qHLJFc
       - CHAT_ID=-4798165321
       - CURRENCY_API_KEY=uB9jmOX6xlypRBtHq65elzi5AZAaUI27vSXSniFo
+      - SESSION_SECRET='secret'
     restart: unless-stopped
     networks:
       - app_network

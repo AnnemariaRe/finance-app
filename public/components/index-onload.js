@@ -1,6 +1,6 @@
 window.onload = function () {
   getCurrency(
-    'https://api.currencyapi.com/v3/latest?apikey=uB5elzi5AZAaUI27vSXSniFo&currencies=EUR%2CUSD%2CUAH%2CKZT&base_currency=RUB',
+    'https://api.currencyapi.com/v3/latest?apikey=uB9jmOX6xlypRBtHq65elzi5AZAaUI27vSXSniFo&currencies=EUR%2CUSD%2CUAH%2CKZT%2CGBP&base_currency=RUB',
   )
     .then((response) => JSON.parse(response))
     .then((data) =>
@@ -16,6 +16,9 @@ window.onload = function () {
         );
         document.getElementById('exchange').innerHTML += generateSubmitFromAPI(
           data.data.KZT,
+        );
+        document.getElementById('exchange').innerHTML += generateSubmitFromAPI(
+          data.data.GBP,
         );
       }, 1000),
     )

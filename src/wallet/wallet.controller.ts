@@ -15,7 +15,8 @@ import { AccountType } from '../enums/AccountType';
 import { AccountsService } from '../account/accounts.service';
 import { CurrenciesService } from '../currency/currencies.service';
 import { AccountDto } from '../dto/account.dto';
-import { AuthGuard } from '../auth/auth.guard';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { TransactionsService } from 'src/transactions/transactions.service';
 
 @Controller('wallet')
 @ApiTags('wallet page')
@@ -23,6 +24,7 @@ export class WalletController {
   constructor(
     private readonly accountsService: AccountsService,
     private readonly currenciesService: CurrenciesService,
+    private readonly transactionsService: TransactionsService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -39,10 +41,17 @@ export class WalletController {
       AccountType.SAVINGS,
     ];
     const accounts = (await this.accountsService.findAllByUserId(userId)) ?? [];
+    const transactions =
+      await this.transactionsService.findAllTransactionsByUserId(userId);
 
     const accountsWithTotalAmount = accounts.map((account) => {
-      const totalAmount = 0;
-      // TODO: calculate totalAmount by existing transactions
+      const transactionsForAccount = transactions.filter(
+        (t) => t.account.id === account.id,
+      );
+      const totalAmount = transactionsForAccount.reduce(
+        (sum, t) => sum + Number(t.amount),
+        0,
+      );
       return { ...account, totalAmount };
     });
     viewData['accounts'] = accountsWithTotalAmount;
@@ -51,6 +60,7 @@ export class WalletController {
   }
 
   @Get('/id')
+  @Render('wallet')
   async getAccountById(id: number) {
     return { viewData: await this.accountsService.findById(id) };
   }

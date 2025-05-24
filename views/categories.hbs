@@ -1,17 +1,34 @@
 <div class="categories-container">
-      <aside class="category-list-box">
-        <h2>Категории</h2>
-        <ul>
-          {{#each categories}}
-            <li>{{this.name}} — {{this.operationType}}</li>
-          {{/each}}
-        </ul>
-      </aside>
+  <aside class="category-list-box">
+    <h2>Категории</h2>
+    
+    <section class="category-section income-section">
+      <h3>Доходы</h3>
+      <ul>
+        {{#each categories}}
+          {{#if (eq this.operationType "income")}}
+            <li>{{this.name}}</li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </section>
 
-      <div class="add-button-container">
-        <button id="openModalBtn">Добавить категорию</button>
-      </div>
-    </div>
+    <section class="category-section expense-section">
+      <h3>Расходы</h3>
+      <ul>
+        {{#each categories}}
+          {{#if (eq this.operationType "expense")}}
+            <li>{{this.name}}</li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </section>
+  </aside>
+
+  <div class="add-button-container">
+    <button id="openModalBtn">Добавить категорию</button>
+  </div>
+</div>
 
 <div id="categoryModal" class="modal">
     <div class="modal-content">

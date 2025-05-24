@@ -11,7 +11,9 @@ import { Transaction } from 'src/entities/transaction.entity';
 import { Category } from 'src/entities/category.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Account, User, Currency, Transaction, Category])],
+  imports: [
+    TypeOrmModule.forFeature([Account, User, Currency, Transaction, Category]),
+  ],
   controllers: [WalletController],
   providers: [AccountsService, CurrenciesService, TransactionsService],
 })

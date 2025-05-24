@@ -1,4 +1,13 @@
-import { Controller, Get, Res, Post, Body, Req, Render, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Res,
+  Post,
+  Body,
+  Req,
+  Render,
+  UseGuards,
+} from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { AuthGuard } from 'src/auth/auth.guard';
 

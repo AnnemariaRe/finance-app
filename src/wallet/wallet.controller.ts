@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Render, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpStatus,
+  Post,
+  Render,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AccountType } from '../enums/AccountType';
 import { AccountsService } from '../account/accounts.service';
@@ -30,14 +41,16 @@ export class WalletController {
       AccountType.SAVINGS,
     ];
     const accounts = (await this.accountsService.findAllByUserId(userId)) ?? [];
-    const transactions = await this.transactionsService.findAllTransactionsByUserId(userId);
+    const transactions =
+      await this.transactionsService.findAllTransactionsByUserId(userId);
 
-    const accountsWithTotalAmount = accounts.map(account => {
+    const accountsWithTotalAmount = accounts.map((account) => {
       const transactionsForAccount = transactions.filter(
-        (t) => t.account.id === account.id
+        (t) => t.account.id === account.id,
       );
       const totalAmount = transactionsForAccount.reduce(
-        (sum, t) => sum + Number(t.amount), 0
+        (sum, t) => sum + Number(t.amount),
+        0,
       );
       return { ...account, totalAmount };
     });

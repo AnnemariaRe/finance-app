@@ -1,25 +1,36 @@
-import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Logger, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { OperationType } from 'src/enums/OperationType';
-import { TransactionsService } from 'src/transactions/transactions.service';
+import { OperationType } from '../enums/OperationType';
+import { TransactionsService } from '../transactions/transactions.service';
 import axios from 'axios';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('history')
 @ApiTags('history page')
 export class HistoryController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
+  private readonly logger = new Logger(HistoryController.name);
+
   @UseGuards(AuthGuard)
   @Get('/')
   @Render('history')
   async getTransactions(@Req() req) {
     const userId = req.user.id;
-    const viewData = [];
+    const viewData = {};
     const transactions =
       (await this.transactionsService.findAllTransactionsByUserId(userId)) ||
       [];
-    viewData['transactions'] = transactions.reverse();
+    viewData['transactions'] = transactions.map((transaction) => {
+      return {
+        id: transaction.id,
+        createdAt: transaction.createdAt,
+        amount: transaction.amount,
+        date: transaction.date.toISOString().split('T')[0],
+        account: transaction.account,
+        category: transaction.category,
+      };
+    });
 
     if (transactions.length === 0) {
       return { viewData: viewData };
@@ -49,7 +60,7 @@ export class HistoryController {
           amountInRUB = transaction.amount;
         }
       } catch (error) {
-        console.error('Currency conversion failed:', error);
+        this.logger.error('Currency conversion failed:', error);
         amountInRUB = transaction.amount;
       }
 

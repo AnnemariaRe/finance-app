@@ -5,7 +5,7 @@ import { User } from '../entities/user.entity';
 import { Currency } from '../entities/currency.entity';
 import { WalletController } from './wallet.controller';
 import { AccountsService } from '../account/accounts.service';
-import { CurrenciesService } from 'src/currency/currencies.service';
+import { CurrenciesService } from '../currency/currencies.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Account, User, Currency])],

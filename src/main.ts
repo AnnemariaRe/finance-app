@@ -21,7 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  app.useGlobalPipes(new ValidationPipe({transform: true}));
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalFilters(
     new GlobalExceptionFilter(),
     new UnauthorizedExceptionFilter(),
@@ -37,6 +37,7 @@ async function bootstrap() {
 
   app.use(
     session({
+      name: 'session',
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,

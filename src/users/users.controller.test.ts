@@ -16,7 +16,7 @@ describe('UsersController', () => {
         if (token === UsersService) {
           return {
             create: jest.fn(),
-            findOne: jest.fn().mockResolvedValue(Promise.resolve(fakeUser)),
+            findOne: jest.fn().mockResolvedValue(fakeUser),
           };
         }
       })

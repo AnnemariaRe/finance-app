@@ -25,9 +25,7 @@ describe('HistoryController', () => {
       .useMocker((token) => {
         if (token === TransactionsService) {
           return {
-            findAllTransactionsByUserId: jest
-              .fn()
-              .mockResolvedValue(Promise.resolve([])),
+            findAllTransactionsByUserId: jest.fn().mockResolvedValue([]),
           };
         }
       })

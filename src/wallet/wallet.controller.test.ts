@@ -20,13 +20,13 @@ describe('WalletController', () => {
           return {
             delete: jest.fn(),
             update: jest.fn(),
-            findOne: jest.fn().mockResolvedValue(Promise.resolve(fakeUser)),
+            findOne: jest.fn().mockResolvedValue(fakeUser),
           };
         }
         if (token === CurrenciesService) {
           return {
             create: jest.fn(),
-            findOne: jest.fn().mockResolvedValue(Promise.resolve(fakeUser)),
+            findOne: jest.fn().mockResolvedValue(fakeUser),
           };
         }
       })

@@ -11,8 +11,8 @@ import {
 } from '@nestjs/common';
 import { CreateTransactionDto } from '../dto/create-transaction.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { OperationType } from 'src/enums/OperationType';
-import { AccountType } from 'src/enums/AccountType';
+import { OperationType } from '../enums/OperationType';
+import { AccountType } from '../enums/AccountType';
 import axios from 'axios';
 import { AccountsService } from '../account/accounts.service';
 import { CategoriesService } from '../categories/categories.service';
@@ -20,7 +20,7 @@ import { TransactionsService } from '../transactions/transactions.service';
 import * as process from 'node:process';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('')
 @ApiTags('index page')
@@ -50,7 +50,7 @@ export class IndexController {
   @Render('index')
   async getTransactions(@Req() req) {
     const userId = req.user.id;
-    const viewData = [];
+    const viewData = {};
     viewData['accounts'] = await this.accountsService.findAllActiveByUserId(
       userId,
     );

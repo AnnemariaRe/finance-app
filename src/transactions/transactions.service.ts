@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Account } from 'src/entities/account.entity';
-import { Category } from 'src/entities/category.entity';
-import { OperationType } from 'src/enums/OperationType';
-import { User } from 'src/entities/user.entity';
+import { Account } from '../entities/account.entity';
+import { Category } from '../entities/category.entity';
+import { OperationType } from '../enums/OperationType';
 import { Repository } from 'typeorm';
-import { Transaction } from 'src/entities/transaction.entity';
-import { CreateTransactionDto } from 'src/dto/create-transaction.dto';
+import { Transaction } from '../entities/transaction.entity';
+import { CreateTransactionDto } from '../dto/create-transaction.dto';
 
 @Injectable()
 export class TransactionsService {
@@ -17,8 +16,6 @@ export class TransactionsService {
     private readonly accountRepository: Repository<Account>,
     @InjectRepository(Category)
     private readonly categoryRepository: Repository<Category>,
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
   ) {}
 
   async create(userId: number, createTransactionDto: CreateTransactionDto) {

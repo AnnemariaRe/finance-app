@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Account } from 'src/entities/account.entity';
-import { Category } from 'src/entities/category.entity';
-import { User } from 'src/entities/user.entity';
-import { Transaction } from 'src/entities/transaction.entity';
+import { Account } from '../entities/account.entity';
+import { Category } from '../entities/category.entity';
+import { User } from '../entities/user.entity';
+import { Transaction } from '../entities/transaction.entity';
 import { HistoryController } from './history.controller';
-import { TransactionsService } from 'src/transactions/transactions.service';
+import { TransactionsService } from '../transactions/transactions.service';
+import { AppLoggerService } from '../logger/app-logger.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Transaction, Account, Category, User])],
   controllers: [HistoryController],
-  providers: [TransactionsService],
+  providers: [TransactionsService, AppLoggerService],
 })
 export class HistoryModule {}

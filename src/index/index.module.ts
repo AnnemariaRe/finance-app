@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { Transaction } from '../entities/transaction.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Account } from 'src/entities/account.entity';
-import { Category } from 'src/entities/category.entity';
-import { User } from 'src/entities/user.entity';
+import { Account } from '../entities/account.entity';
+import { Category } from '../entities/category.entity';
+import { User } from '../entities/user.entity';
 import { IndexController } from './index.controller';
-import { Currency } from 'src/entities/currency.entity';
+import { Currency } from '../entities/currency.entity';
 import { AccountsService } from '../account/accounts.service';
 import { TransactionsService } from '../transactions/transactions.service';
-import { CategoriesService } from 'src/categories/categories.service';
+import { CategoriesService } from '../categories/categories.service';
 
 @Module({
   imports: [

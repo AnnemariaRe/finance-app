@@ -14,7 +14,7 @@ export const fakeUser: User = {
   updatedAt: fakeDate,
   email: 'email@gmail.com',
   name: 'name',
-  password: 'password',
+  password: 'hashed-password',
 };
 
 export const fakeCurrency: Currency = {

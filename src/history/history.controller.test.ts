@@ -8,7 +8,7 @@ import {
   fakeTransaction,
   fakeUser,
 } from '../util/fakers';
-import { mockRequest } from '../util/mocks';
+import { mockLogger, mockRequest } from '../util/mocks';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -16,7 +16,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('HistoryController', () => {
   let historyController: HistoryController;
   let transactionsService: TransactionsService;
-  const logger = { error: jest.fn(), log: jest.fn(), warn: jest.fn() };
+  const logger = mockLogger();
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({

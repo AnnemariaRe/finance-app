@@ -15,8 +15,8 @@ import { AccountType } from '../enums/AccountType';
 import { AccountsService } from '../account/accounts.service';
 import { CurrenciesService } from '../currency/currencies.service';
 import { AccountDto } from '../dto/account.dto';
-import { AuthGuard } from 'src/auth/auth.guard';
-import { TransactionsService } from 'src/transactions/transactions.service';
+import { AuthGuard } from '../auth/auth.guard';
+import { TransactionsService } from '../transactions/transactions.service';
 
 @Controller('wallet')
 @ApiTags('wallet page')

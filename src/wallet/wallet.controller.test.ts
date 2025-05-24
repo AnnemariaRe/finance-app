@@ -1,10 +1,11 @@
 import { Test } from '@nestjs/testing';
-import { fakeAccount, fakeUser } from '../util/fakers';
+import { fakeAccount, fakeTransaction, fakeUser } from '../util/fakers';
 import { AccountsService } from '../account/accounts.service';
 import { CurrenciesService } from '../currency/currencies.service';
 import { WalletController } from './wallet.controller';
 import { HttpStatus } from '@nestjs/common';
 import { mockResponse } from '../util/mocks';
+import { TransactionsService } from '../transactions/transactions.service';
 
 describe('WalletController', () => {
   let walletController: WalletController;
@@ -27,6 +28,13 @@ describe('WalletController', () => {
           return {
             create: jest.fn(),
             findOne: jest.fn().mockResolvedValue(fakeUser),
+          };
+        }
+        if (token === TransactionsService) {
+          return {
+            findAllTransactionsByUserId: jest
+              .fn()
+              .mockResolvedValue([fakeTransaction]),
           };
         }
       })

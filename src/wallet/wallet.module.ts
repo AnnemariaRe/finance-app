@@ -5,10 +5,10 @@ import { User } from '../entities/user.entity';
 import { Currency } from '../entities/currency.entity';
 import { WalletController } from './wallet.controller';
 import { AccountsService } from '../account/accounts.service';
-import { CurrenciesService } from 'src/currency/currencies.service';
-import { TransactionsService } from 'src/transactions/transactions.service';
-import { Transaction } from 'src/entities/transaction.entity';
-import { Category } from 'src/entities/category.entity';
+import { CurrenciesService } from '../currency/currencies.service';
+import { TransactionsService } from '../transactions/transactions.service';
+import { Transaction } from '../entities/transaction.entity';
+import { Category } from '../entities/category.entity';
 
 @Module({
   imports: [

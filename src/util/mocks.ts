@@ -19,3 +19,11 @@ export type RequestType = { user: { id: number } };
 export const mockRequest: () => RequestType = () => {
   return { user: { id: fakeUser.id } };
 };
+
+export const mockLogger = () => {
+  return {
+    error: jest.fn(),
+    log: jest.fn(),
+    warn: jest.fn(),
+  };
+};

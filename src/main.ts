@@ -49,6 +49,7 @@ async function bootstrap() {
     res.locals.currentPath = req.path;
     next();
   });
+  hbs.registerHelper('eq', (a, b) => a === b);
 
   await app.listen(process.env.PORT ?? 3000);
   logger.log(`Application is running on: ${await app.getUrl()}`);

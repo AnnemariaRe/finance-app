@@ -305,32 +305,60 @@ table {
     text-decoration: underline;
 }
   
-
 .categories-container {
     display: flex;
-    gap: 40px;
-    align-items: flex-start;
+    gap: 2rem;
+    font-family: Arial, sans-serif;
   }
   
   .category-list-box {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
     width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #f9f9f9;
   }
   
-  .category-list-box ul {
+  .category-list-box h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .category-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-section h3 {
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid;
+    margin-bottom: 0.5rem;
+  }
+  
+  .income-section h3 {
+    color: #41734d; 
+    border-color: #41734d;
+  }
+  
+  .expense-section h3 {
+    color: #62242a; 
+    border-color: #62242a;
+  }
+  
+  .category-section ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-left: 0;
+    margin-top: 0;
   }
   
-  .category-list-box li {
-    margin-bottom: 8px;
+  .category-section ul li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #e0e0e0;
   }
   
   .add-button-container {
-    display: flex;
+    position: fixed;
+    top: 10px;
+    left: 550px;
     align-items: center;
     justify-content: center;
   }

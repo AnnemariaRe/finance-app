@@ -19,7 +19,16 @@ export class HistoryController {
     const transactions =
       (await this.transactionsService.findAllTransactionsByUserId(userId)) ||
       [];
-    viewData['transactions'] = transactions.reverse();
+      viewData['transactions'] = transactions.map((transaction) => {
+        return {
+          id: transaction.id,
+          createdAt: transaction.createdAt,
+          amount: transaction.amount,
+          date: transaction.date.toISOString().split('T')[0],
+          account: transaction.account,
+          category: transaction.category,
+        };
+      });
 
     if (transactions.length === 0) {
       return { viewData: viewData };

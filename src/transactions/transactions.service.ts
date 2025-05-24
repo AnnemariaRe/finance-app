@@ -9,7 +9,7 @@ import { Transaction } from 'src/entities/transaction.entity';
 import { CreateTransactionDto } from 'src/dto/create-transaction.dto';
 
 @Injectable()
-export default class TransactionsService {
+export class TransactionsService {
   constructor(
     @InjectRepository(Transaction)
     private readonly transactionRepository: Repository<Transaction>,

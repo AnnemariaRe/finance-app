@@ -5,7 +5,7 @@ import { Category } from 'src/entities/category.entity';
 import { User } from 'src/entities/user.entity';
 import { Transaction } from 'src/entities/transaction.entity';
 import { HistoryController } from './history.controller';
-import TransactionsService from 'src/transactions/transactions.service';
+import { TransactionsService } from 'src/transactions/transactions.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Transaction, Account, Category, User])],

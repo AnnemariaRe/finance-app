@@ -106,3 +106,29 @@ input[type='date'] {
 .hidden {
     display: none;
 }
+
+.logout-bar {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .logout-form {
+    display: inline;
+  }
+  
+  .logout-button {
+    background-color: #6c877a;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #4c6a5b;
+  }
+  

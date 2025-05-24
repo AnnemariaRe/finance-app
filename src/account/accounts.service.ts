@@ -8,7 +8,7 @@ import { AccountType } from '../enums/AccountType';
 import { User } from '../entities/user.entity';
 
 @Injectable()
-export default class AccountsService {
+export class AccountsService {
   constructor(
     @InjectRepository(Account)
     private readonly accountRepository: Repository<Account>,

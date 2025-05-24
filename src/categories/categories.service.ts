@@ -22,7 +22,11 @@ export class CategoriesService {
     });
   }
 
-  async createCategory(data: { name: string; operationType: OperationType; userId: number }) {
+  async createCategory(data: {
+    name: string;
+    operationType: OperationType;
+    userId: number;
+  }) {
     const category = this.categoryRepository.create({
       name: data.name,
       operationType: data.operationType,

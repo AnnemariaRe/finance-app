@@ -22,7 +22,10 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new GlobalExceptionFilter(), new UnauthorizedExceptionFilter());
+  app.useGlobalFilters(
+    new GlobalExceptionFilter(),
+    new UnauthorizedExceptionFilter(),
+  );
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
@@ -31,13 +34,13 @@ async function bootstrap() {
   hbs.registerHelper('startsWith', function (str, prefix) {
     return str.startsWith(prefix);
   });
-  
+
   app.use(
     session({
-      secret: 'aboba',
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-      cookie: { secure: false }
+      cookie: { secure: false },
     }),
   );
   app.use(passport.initialize());

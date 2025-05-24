@@ -25,7 +25,7 @@ const ONE_HOUR_IN_MS = 1000 * 60 * 60;
       provide: APP_INTERCEPTOR,
       useClass: ResponseTimeInterceptor,
     },
-    SessionSerializer
+    SessionSerializer,
   ],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),

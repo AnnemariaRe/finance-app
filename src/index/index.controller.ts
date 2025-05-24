@@ -51,8 +51,12 @@ export class IndexController {
   async getTransactions(@Req() req) {
     const userId = req.user.id;
     const viewData = [];
-    viewData['accounts'] = await this.accountsService.findAllActiveByUserId(userId);
-    const categories = await this.categoriesService.findCategoriesByUserId(userId);
+    viewData['accounts'] = await this.accountsService.findAllActiveByUserId(
+      userId,
+    );
+    const categories = await this.categoriesService.findCategoriesByUserId(
+      userId,
+    );
     viewData['expenseCategories'] = categories.filter(
       (category) => category.operationType === OperationType.EXPENSE,
     );

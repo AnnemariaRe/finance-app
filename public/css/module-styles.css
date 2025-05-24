@@ -312,7 +312,6 @@ table {
     align-items: flex-start;
   }
   
-  /* Список в рамке */
   .category-list-box {
     border: 1px solid #ccc;
     padding: 20px;
@@ -330,7 +329,6 @@ table {
     margin-bottom: 8px;
   }
   
-  /* Кнопка добавить */
   .add-button-container {
     display: flex;
     align-items: center;
@@ -351,7 +349,6 @@ table {
     background-color: #4c6a5b;
   }
   
-  /* Модальное окно */
   .modal {
     display: none;
     position: fixed;

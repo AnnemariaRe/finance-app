@@ -1,5 +1,5 @@
-import { Controller, Get, Res, Post, Body, Req, Render } from "@nestjs/common";
-import { CategoriesService } from "./categories.service";
+import { Controller, Get, Res, Post, Body, Req, Render } from '@nestjs/common';
+import { CategoriesService } from './categories.service';
 
 @Controller('categories')
 export class CategoriesController {
@@ -9,7 +9,9 @@ export class CategoriesController {
   @Render('categories')
   async showCategories(@Req() req) {
     const userId = req.user.id;
-    const categories = await this.categoriesService.findCategoriesByUserId(userId);
+    const categories = await this.categoriesService.findCategoriesByUserId(
+      userId,
+    );
     return { categories };
   }
 

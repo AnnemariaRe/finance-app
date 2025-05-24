@@ -35,6 +35,7 @@ button {
 }
 
 input[type='text'],
+input[type='number'],
 select,
 input[type='date'] {
   width: 100%;

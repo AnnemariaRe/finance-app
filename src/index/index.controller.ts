@@ -126,7 +126,7 @@ export class IndexController {
           monthExpense += Number(-amountInRUB);
 
           const day = transaction.date.getDate();
-          if (transaction.date.getMonth() == month && day > today - 9) {
+          if (transaction.date.getMonth() == month && day >= today - 9) {
             data[day] += Number(-transaction.amount);
           }
         } else {
